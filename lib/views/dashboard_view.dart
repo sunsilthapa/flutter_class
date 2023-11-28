@@ -24,7 +24,7 @@ class DashboardView extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: (){
-                    Navigator.pushNamed(context, AppRoute.arithmeticRoute);
+                    Navigator.pushNamed(context, AppRoute.containerRoute);
                   },
                   child: const Text("Random No")),
               ),

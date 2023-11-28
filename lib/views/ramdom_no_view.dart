@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-
 class RandomNumberGame extends StatefulWidget {
   const RandomNumberGame({Key? key}) : super(key: key);
 
@@ -26,8 +25,10 @@ class _RandomNumberGameState extends State<RandomNumberGame> {
   void generateRandomNumbers() {
     final Random random = Random();
     setState(() {
-      randomNumber1 = random.nextInt(100); // Generates a random number between 0 and 99
-      randomNumber2 = random.nextInt(100); // Generates a random number between 0 and 99
+      randomNumber1 =
+          random.nextInt(100); // Generates a random number between 0 and 99
+      randomNumber2 =
+          random.nextInt(100); // Generates a random number between 0 and 99
       // resultText = '';
     });
   }
@@ -41,10 +42,9 @@ class _RandomNumberGameState extends State<RandomNumberGame> {
       setState(() {
         resultText = 'Correct';
         clickedCounter++;
-        score= clickedCounter/10;
+        score = clickedCounter / 10;
       });
     }
-  
 
     if (clickedCounter >= 10) {
       setState(() {
@@ -52,7 +52,7 @@ class _RandomNumberGameState extends State<RandomNumberGame> {
       });
     }
   }
-   
+
   void restartGame() {
     setState(() {
       clickedCounter = 0;
@@ -72,24 +72,29 @@ class _RandomNumberGameState extends State<RandomNumberGame> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: isButtonDisabled
-                  ? null
-                  : () {
-                      checkAnswer(randomNumber1);
-                      generateRandomNumbers();
-                    },
-              child: Text('Button 1: $randomNumber1'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: isButtonDisabled
-                  ? null
-                  : () {
-                      checkAnswer(randomNumber2);
-                      generateRandomNumbers();
-                    },
-              child: Text('Button 2: $randomNumber2'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: isButtonDisabled
+                      ? null
+                      : () {
+                          checkAnswer(randomNumber1);
+                          generateRandomNumbers();
+                        },
+                  child: Text('Button 1: $randomNumber1'),
+                ),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: isButtonDisabled
+                      ? null
+                      : () {
+                          checkAnswer(randomNumber2);
+                          generateRandomNumbers();
+                        },
+                  child: Text('Button 2: $randomNumber2'),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Text('Result: $resultText'),
@@ -98,7 +103,7 @@ class _RandomNumberGameState extends State<RandomNumberGame> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: restartGame,
-              child:const Text('Restart Game'),
+              child: const Text('Restart Game'),
             ),
           ],
         ),

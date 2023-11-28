@@ -29,6 +29,20 @@ class _ArithmeticViewState extends State<ArithmeticView> {
     int result = first - second;
     Navigator.pushNamed(context, AppRoute.outputRoute, arguments: result);
   }
+  multi(){
+    int first = int.parse(firstController.text);
+    int second= int.parse(secondController.text);
+
+    int result = first * second;
+    Navigator.pushNamed(context, AppRoute.outputRoute, arguments: result);
+  }
+  division(){
+    int first = int.parse(firstController.text);
+    int second= int.parse(secondController.text);
+
+    int result = (first / second) as int;
+    Navigator.pushNamed(context, AppRoute.outputRoute, arguments: result);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +71,6 @@ class _ArithmeticViewState extends State<ArithmeticView> {
                   if(key.currentState!.validate()){
                     add();
                   }
-                  Navigator.pushNamed(context, AppRoute.outputRoute, arguments: result);
                 }, child:const Text("Addition"),) ,
               ),
               const SizedBox(
@@ -65,21 +78,33 @@ class _ArithmeticViewState extends State<ArithmeticView> {
               ),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: (){}, child:const Text("Subtraction"),) ,
+                child: ElevatedButton(onPressed: (){
+                  if(key.currentState!.validate()){
+                    sub();
+                  }
+                }, child:const Text("Subtraction"),) ,
               ),
               const SizedBox(
                 height: 14,
               ),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: (){}, child:const Text("Multiplication"),) ,
+                child: ElevatedButton(onPressed: (){
+                  if(key.currentState!.validate()){
+                    multi();
+                  }
+                }, child:const Text("Multiplication"),) ,
               ),
               const SizedBox(
                 height: 14,
               ),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(onPressed: (){}, child:const Text("Division"),) ,
+                child: ElevatedButton(onPressed: (){
+                  if(key.currentState!.validate()){
+                    division();
+                  }
+                }, child:const Text("Division"),) ,
               ),
             ]),
           ),
